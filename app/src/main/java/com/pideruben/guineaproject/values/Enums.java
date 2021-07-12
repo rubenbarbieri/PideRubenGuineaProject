@@ -8,4 +8,10 @@ public class Enums {
         Ammalato
     };
 
+    public enum tipoBagaglio {
+        Piccolo,
+        Medio,
+        Grande
+    };
+
 }

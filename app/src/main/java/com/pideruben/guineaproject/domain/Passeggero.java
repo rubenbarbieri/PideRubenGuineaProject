@@ -10,8 +10,8 @@ public class Passeggero {
     public Passeggero(){
         tipoPasseggero = Enums.tipoPasseggero.Adulto;
     }
-    public Passeggero(String tipo){
-        /*Rivedere enum e finire*/
+    public Passeggero(Enums.tipoPasseggero tipo){
+        tipoPasseggero = tipo;
     }
 
     public Enums.tipoPasseggero getTipoPasseggero() {
@@ -20,5 +20,19 @@ public class Passeggero {
 
     public void setTipoPasseggero(tipoPasseggero tipo){
         tipoPasseggero = tipo;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null)
+            return false;
+        if(o == this)
+            return true;
+        if(o instanceof Passeggero){
+            Passeggero passeggero = (Passeggero) o;
+            if(passeggero.getTipoPasseggero() == this.tipoPasseggero)
+                return true;
+        }
+        return false;
     }
 }
