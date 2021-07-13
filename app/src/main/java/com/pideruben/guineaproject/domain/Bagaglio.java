@@ -1,12 +1,6 @@
 package com.pideruben.guineaproject.domain;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import com.pideruben.guineaproject.values.Enums;
-
-import java.util.Objects;
 
 public class Bagaglio {
 

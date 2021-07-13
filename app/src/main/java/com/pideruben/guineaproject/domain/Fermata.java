@@ -6,8 +6,10 @@ public class Fermata {
     private int distanzaCapolinea;
 
     public Fermata(String nome, int distanzaCapolinea){
-        this.nome = nome;
-        this.distanzaCapolinea = distanzaCapolinea;
+        if (nome != null) {
+            this.nome = nome;
+            this.distanzaCapolinea = distanzaCapolinea;
+        }
     }
 
     public String getNome() {

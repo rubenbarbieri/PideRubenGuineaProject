@@ -8,10 +8,11 @@ public class Tratta {
     private Fermata fine;
 
     public Tratta(Fermata inizio, Fermata fine){
-        this.inizio = inizio;
-        this.fine = fine;
-        int lunghezza = abs(inizio.getDistanzaCapolinea() - fine.getDistanzaCapolinea());
-        this.lunghezza = lunghezza;
+        if(inizio != null && fine != null) {
+            this.inizio = inizio;
+            this.fine = fine;
+            this.lunghezza = abs(inizio.getDistanzaCapolinea() - fine.getDistanzaCapolinea());
+        }
     }
 
     public int getLunghezza(){
@@ -28,14 +29,20 @@ public class Tratta {
 
     @Override
     public boolean equals(Object o){
-        if (o == null)
-            return false;
+        if (o == null) return false;
+        if (o == this) return true;
         if (o instanceof Tratta){
             Tratta tratta = (Tratta)o;
             if(tratta.getInizio().equals(this.getInizio()) && tratta.getFine().equals(this.getFine()))
                 return true;
         }
         return false;
+    }
+
+    public double getPrezzoBiglietto(){
+        /*Supponendo di calcolare il prezzo solo in base alla lunghezza del tragitto*/
+        double c = 0.1; //moltiplicatore costo per km
+        return c * lunghezza;
     }
 
 }

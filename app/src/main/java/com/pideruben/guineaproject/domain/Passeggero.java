@@ -24,10 +24,8 @@ public class Passeggero {
 
     @Override
     public boolean equals(Object o){
-        if(o == null)
-            return false;
-        if(o == this)
-            return true;
+        if(o == null) return false;
+        if(o == this) return true;
         if(o instanceof Passeggero){
             Passeggero passeggero = (Passeggero) o;
             if(passeggero.getTipoPasseggero() == this.tipoPasseggero)

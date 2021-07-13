@@ -18,12 +18,8 @@ public class Biglietto {
             this.passeggero = passeggero;
             this.tratta = tratta;
         }
-
-        /*Studiare bene funzionamento di Date e Calendar!!!*/
-
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"), Locale.getDefault());
-        Date today = calendar.getTime();
-
+        data = new Date();
+        costo = tratta.getPrezzoBiglietto();
     }
 
     public Tratta getTratta() {
