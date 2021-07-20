@@ -14,4 +14,9 @@ public class Enums {
         Grande
     };
 
+    public enum tipoDipendente {
+        Autista,
+        Controllore
+    };
+
 }

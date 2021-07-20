@@ -68,7 +68,4 @@ public class Biglietto {
         }
         return false;
     }
-
-
-
 }
