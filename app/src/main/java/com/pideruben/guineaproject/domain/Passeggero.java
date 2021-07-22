@@ -24,13 +24,9 @@ public class Passeggero {
 
     @Override
     public boolean equals(Object o){
-        if(o == null) return false;
         if(o == this) return true;
-        if(o instanceof Passeggero){
-            Passeggero passeggero = (Passeggero) o;
-            if(passeggero.getTipoPasseggero() == this.tipoPasseggero)
-                return true;
-        }
-        return false;
+        if(o == null || getClass() != o.getClass()) return false;
+        Passeggero passeggero = (Passeggero) o;
+        return passeggero.getTipoPasseggero() == tipoPasseggero;
     }
 }

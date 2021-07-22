@@ -40,5 +40,11 @@ public class Dipendente {
         return password;
     }
 
+    @Override
+    public boolean equals(Object o){
+        //...
+        return false;
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package com.pideruben.guineaproject.domain;
 
 public class Mezzo {
+
     private String targa;
     private int kmPercorsi;
 
@@ -23,5 +24,13 @@ public class Mezzo {
 
     public void setKmPercorsi(int kmPercorsi) {
         this.kmPercorsi = kmPercorsi;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this) return true;
+        if(o == null || o.getClass() != getClass()) return false;
+        Mezzo mezzo = (Mezzo) o;
+        return targa.compareTo(mezzo.getTarga()) == 0;
     }
 }
