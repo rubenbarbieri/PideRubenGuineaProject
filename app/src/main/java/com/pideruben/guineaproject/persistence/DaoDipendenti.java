@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface DaoDipendenti {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     public void inserisciDipendente(EntityDipendente dipendente);
 
     @Delete

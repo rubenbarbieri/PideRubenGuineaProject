@@ -21,11 +21,16 @@ public class EntityDipendente {
 
     public String cognome;
 
+    /*
+    * Non sono sicuro che si possa fare un costruttore a piacere, devo ancora studiare come funziona
+    * questa parte
+
     public EntityDipendente(String nome, String cognome){
         if(nome != null && cognome != null){
             this.nome = nome;
             this.cognome = cognome;
         }
     }
+    */
 
 }
