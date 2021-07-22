@@ -15,6 +15,7 @@ public class Dipendente {
     private Enums.tipoDipendente tipoDipendente;
     private String username;
     private String password;
+    private Mezzo mezzo;
 
     public Dipendente(int id, Enums.tipoDipendente tipoDipendente, String username, String password) {
         this.id = id;
