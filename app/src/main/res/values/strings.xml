@@ -1,3 +1,4 @@
 <resources>
-    <string name="blasfêmia">GuineaProject</string>
+    <string name = "app_name">GuineaTransport</string>
+    <string name = "textview_prova">Benvenuto su GuineaTransport!</string>
 </resources>
