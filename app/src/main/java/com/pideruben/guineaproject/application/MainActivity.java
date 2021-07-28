@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 AppDatabase db = AppDatabase.getDatabase(getApplicationContext());
                 DaoDipendenti daoDipendenti = db.daoDipendenti();
                 daoDipendenti.inserisciDipendente(new EntityDipendente("Lorenzo", "Iacopetta"));
+                daoDipendenti.inserisciDipendente(new EntityDipendente("Ruben","Barbieri"));
                 System.out.println("Aggiunto dipendente");
             }
         });
