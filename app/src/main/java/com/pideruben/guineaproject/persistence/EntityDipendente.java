@@ -28,4 +28,12 @@ public class EntityDipendente {
         }
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
 }

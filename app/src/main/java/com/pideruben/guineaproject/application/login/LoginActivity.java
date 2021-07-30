@@ -7,11 +7,8 @@ package com.pideruben.guineaproject.application.login;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -28,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Log.i("Login: ", "Bottone premuto");
+                Log.i("Login", "Bottone premuto");
             }
         });
 
