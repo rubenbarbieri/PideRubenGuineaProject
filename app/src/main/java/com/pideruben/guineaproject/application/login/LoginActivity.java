@@ -5,6 +5,7 @@
 
 package com.pideruben.guineaproject.application.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.pideruben.guineaproject.R;
+import com.pideruben.guineaproject.application.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,7 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Log.i("Login", "Bottone premuto");
+                //Log.i("Login", "Bottone premuto");
+                Intent myIntent = new Intent(v.getContext(), MainActivity.class);
+                startActivity(myIntent);
             }
         });
 
