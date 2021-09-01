@@ -9,7 +9,6 @@ public class Biglietto {
 
     private Passeggero passeggero;
     private Tratta tratta;
-
     private Date data;
     private double costo;
 

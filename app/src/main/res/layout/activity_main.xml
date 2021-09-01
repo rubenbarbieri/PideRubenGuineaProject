@@ -7,7 +7,7 @@
     tools:context=".application.MainActivity">
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/spFrom"
         android:layout_width="176dp"
         android:layout_height="29dp"
         android:layout_marginTop="20dp"
@@ -39,14 +39,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spTo"
         android:layout_width="176dp"
         android:layout_height="29dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.276"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+        app:layout_constraintTop_toBottomOf="@+id/spFrom" />
 
     <TextView
         android:id="@+id/textView"
@@ -61,16 +61,17 @@
         app:layout_constraintVertical_bias="0.054" />
 
     <Button
-        android:id="@+id/buttonAdd"
+        android:id="@+id/buttonAddAdult"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/button_shape"
         android:text="+"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintTop_toBottomOf="@+id/spTo"
         app:layout_constraintVertical_bias="0.069" />
 
     <Button
@@ -82,8 +83,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddAdult"
         app:layout_constraintVertical_bias="0.95" />
+
 
     <TextView
         android:id="@+id/textView6"
@@ -106,5 +108,17 @@
         app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/nAdulti"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toEndOf="@+id/buttonAddAdult"
+        app:layout_constraintTop_toBottomOf="@+id/spTo" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
