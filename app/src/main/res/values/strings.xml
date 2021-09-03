@@ -2,7 +2,7 @@
     <string name="app_name">GuineaTransport</string>
     <string name="textview_prova">Pide fa Schifo!</string>
     <string name="buttonLogin">Login</string>
-    <string name="plainTextLogin">ID</string>
+    <string name="plainTextLogin">Email address</string>
     <string name="passwordLogin">Password</string>
     <string name="textViewPasswordDimenticata">Password dimenticata?</string>
     <string-array name="spinnerFermate">
