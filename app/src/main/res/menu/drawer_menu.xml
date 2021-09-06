@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    android:background="@color/main_bg_color"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_help"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_veicolo"
+            android:icon="@drawable/veicolo"
+            android:title="Veicolo" />
+
+        <item
+            android:id="@+id/nav_sommario"
+            android:icon="@drawable/sommario"
+            android:title="Rides Summary" />
+
+        <item
+            android:id="@+id/nav_impostazioni"
+            android:icon="@drawable/arrow"
+            android:title="Impostazioni" />
+        <item
+            android:id="@+id/nav_Account"
+            android:icon="@drawable/arrow"
+            android:title="Account" />
+
+    </group>
+</menu>

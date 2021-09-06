@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.pideruben.guineaproject.R;
 import com.pideruben.guineaproject.application.MainActivity;
+import com.pideruben.guineaproject.R;
 
 public class LoginActivity extends AppCompatActivity {
 

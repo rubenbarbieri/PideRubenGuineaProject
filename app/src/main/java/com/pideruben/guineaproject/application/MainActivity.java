@@ -1,62 +1,68 @@
 package com.pideruben.guineaproject.application;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.pideruben.guineaproject.R;
-import com.pideruben.guineaproject.domain.Biglietto;
-import com.pideruben.guineaproject.domain.Fermata;
-import com.pideruben.guineaproject.domain.Passeggero;
-import com.pideruben.guineaproject.domain.Tratta;
-
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.view.MenuItem;
 
+import com.google.android.material.navigation.NavigationView;
+import com.pideruben.guineaproject.application.fragments.FragmentBiglietto;
+import com.pideruben.guineaproject.R;
 
+import org.jetbrains.annotations.NotNull;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        drawer = findViewById(R.id.drawer_layout);
 
-        Spinner spinnerFrom = findViewById(R.id.spFrom);
-        Spinner spinnerTo = findViewById(R.id.spTo);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerFermate, R.layout.color_spinner_ly);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        spinnerFrom.setAdapter(adapter);
-        spinnerFrom.setOnItemSelectedListener(this);
+        getSupportActionBar().setDisplayShowTitleEnabled(true); //visibilita titolo
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.main_bg_color))); //colore toolbar
 
-        spinnerTo.setAdapter(adapter);
-        spinnerTo.setOnItemSelectedListener(this);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black)); //colore hanburger
 
-
-
-        int distanzaDaCapolinea =1;
-        Fermata from = new Fermata(spinnerFrom.getSelectedItem().toString(), distanzaDaCapolinea);
-        Fermata to = new Fermata(spinnerTo.getSelectedItem().toString(), distanzaDaCapolinea);
-
-        Tratta tratta = new Tratta(from, to);
-        Passeggero passeggero = new Passeggero();
-        Biglietto biglietto = new Biglietto(passeggero,tratta);
 
 
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentBiglietto()).commit();
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 }
