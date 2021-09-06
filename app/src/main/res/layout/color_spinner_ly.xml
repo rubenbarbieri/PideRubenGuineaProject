@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:text="ciao"
+    android:paddingLeft="15dp"
+    android:paddingRight="5dp"
+    android:fontFamily="@font/poppins_medium"
+    android:textSize="14sp"
+    android:drawableRight="@drawable/arrow"
+    android:background="@drawable/dw_spinner"
+    android:textColor="@color/black"
+    android:layout_height="wrap_content">
+
+</CheckedTextView>

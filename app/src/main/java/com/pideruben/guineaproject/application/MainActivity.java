@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import static com.pideruben.guineaproject.R.id.nAdulti;
+
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Spinner spinnerFrom = findViewById(R.id.spFrom);
         Spinner spinnerTo = findViewById(R.id.spTo);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerFermate, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerFermate, R.layout.color_spinner_ly);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
         spinnerFrom.setAdapter(adapter);
         spinnerFrom.setOnItemSelectedListener(this);
@@ -45,17 +46,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Tratta tratta = new Tratta(from, to);
         Passeggero passeggero = new Passeggero();
         Biglietto biglietto = new Biglietto(passeggero,tratta);
-
-        TextView numeroAdulti = findViewById(nAdulti);
-
-
-        final Button addAdult = findViewById(R.id.buttonAddAdult);
-        addAdult.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                //Log.i("MainPage", "Bottone premuto");
-                numeroAdulti.setText("ciao");
-            }
-        });
 
 
     }
