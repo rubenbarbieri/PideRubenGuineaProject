@@ -17,12 +17,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.room.Database;
 
 import com.pideruben.guineaproject.R;
+import com.pideruben.guineaproject.persistence.AppDatabase;
+import com.pideruben.guineaproject.persistence.EntityBiglietto;
+import com.pideruben.guineaproject.persistence.EntityDipendente;
+import com.pideruben.guineaproject.values.Enums;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class FragmentBiglietto extends Fragment {
@@ -187,12 +196,53 @@ public class FragmentBiglietto extends Fragment {
         confirmRide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nAdults.setText(Integer.toString(Integer.parseInt(nAdults.getText().toString()) + 1));
+                inserisciBiglietto();
             }
         });
 
-
-
         return view;
     }
+
+    private void inserisciBiglietto(){
+        AppDatabase db = AppDatabase.getDatabase(this.getContext());
+        View v = getView();
+
+        TextView adults = v.findViewById(R.id.nAdults);
+        int nAdults = Integer.parseInt(adults.getText().toString());
+        TextView children = v.findViewById(R.id.nChildren);
+        int nChildren = Integer.parseInt(children.getText().toString());
+        TextView students = v.findViewById(R.id.nStudents);
+        int nStudents = Integer.parseInt(students.getText().toString());
+        TextView invalidi = v.findViewById(R.id.nInvalid);
+        int nInvalidi = Integer.parseInt(invalidi.getText().toString());
+
+        // ... retrieve luggages ...
+        TextView bagagliPiccoli = v.findViewById(R.id.nSmallLuggage);
+        int nBagagliPiccoli = Integer.parseInt(bagagliPiccoli.getText().toString());
+        TextView bagagliMedi = v.findViewById(R.id.nMediumLuggage);
+        int nBagagliMedi = Integer.parseInt(bagagliMedi.getText().toString());
+        TextView bagagliEnormi = v.findViewById(R.id.nBigLuggage);
+        int nBagagliColossali = Integer.parseInt(bagagliEnormi.getText().toString());
+
+        // ... retrieve date ...
+        TextView date = v.findViewById(R.id.tx_date);
+        String data = date.getText().toString();
+
+        // ... retrieve tratta ...
+        Spinner from = v.findViewById(R.id.spFrom);
+        String tratta = from.getSelectedItem().toString();
+        Spinner to = v.findViewById(R.id.spTo);
+        tratta += " to " + to.getSelectedItem().toString();
+
+        //Create records
+
+        EntityBiglietto biglietto = new EntityBiglietto(nAdults, nChildren, nStudents, nInvalidi,
+                nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta);
+        Log.i("Main:", biglietto.toString());
+        db.daoBiglietto().inserisciBiglietto(biglietto);
+        for(EntityBiglietto b : db.daoBiglietto().getAllBiglietti())
+            Log.i("DB:", b.toString());
+    }
+
 }

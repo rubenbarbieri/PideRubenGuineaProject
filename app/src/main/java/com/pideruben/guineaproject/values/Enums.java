@@ -5,7 +5,8 @@ public class Enums {
     public enum tipoPasseggero {
         Adulto,
         Bambino,
-        Ammalato
+        Invalido,
+        Studente
     };
 
     public enum tipoBagaglio {
