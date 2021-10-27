@@ -21,6 +21,6 @@ public interface DaoDipendenti {
     /*Con LiveData posso eseguire operazioni quando i dati vengono aggiornati
     * è una specie di observer per il database??*/
     @Query("SELECT * FROM EntityDipendente ORDER BY id ASC")
-    public LiveData<List<EntityDipendente>> getDipendenti();
+    public List<EntityDipendente> getDipendenti();
 
 }
