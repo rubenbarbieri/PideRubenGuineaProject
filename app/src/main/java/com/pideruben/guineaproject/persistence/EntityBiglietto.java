@@ -12,29 +12,14 @@ import java.util.Date;
 public class EntityBiglietto {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
 
-    @ColumnInfo
-    private Enums.tipoPasseggero passeggero;
+    public Enums.tipoPasseggero passeggero;
 
-    @ColumnInfo
-    private Enums.tipoBagaglio bagaglio;
+    public Enums.tipoBagaglio bagaglio;
 
-    @ColumnInfo
-    private Date data;
+    public Date data;
 
-    @ColumnInfo
-    private String tratta;
+    public String tratta;
 
-    //ID sempre uguale a 0 (autogenerate)
-    public EntityBiglietto(int id, Enums.tipoPasseggero passeggero, Enums.tipoBagaglio bagaglio,
-                           Date data, String tratta) {
-        if(id == 0) {
-            this.id = id;
-            this.passeggero = passeggero;
-            this.bagaglio = bagaglio;
-            this.data = data;
-            this.tratta = tratta;
-        }
-    }
 }
