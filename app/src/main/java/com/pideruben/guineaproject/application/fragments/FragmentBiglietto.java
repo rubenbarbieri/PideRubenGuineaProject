@@ -4,6 +4,7 @@ package com.pideruben.guineaproject.application.fragments;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.euicc.DownloadableSubscription;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.pideruben.guineaproject.R;
+import com.pideruben.guineaproject.values.Prezzi;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -47,10 +49,13 @@ public class FragmentBiglietto extends Fragment {
         TextView Date = view.findViewById(R.id.tx_date);
         Date.setText(dateFormat.format(date));
 
+        TextView costoTotale = view.findViewById(R.id.totaleDaPagare);
         TextView nAdults = view.findViewById(R.id.nAdults);
         TextView nChildren = view.findViewById(R.id.nChildren);
         TextView nStudents = view.findViewById(R.id.nStudents);
         TextView nInvalidi = view.findViewById(R.id.nInvalid);
+
+
 
 
         //PULSANTI aggiungi/togli persone
@@ -59,6 +64,7 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nAdults.setText(Integer.toString(Integer.parseInt(nAdults.getText().toString())+1));
+                costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoAdulto));
             }
         });
         Button minusAdult = view.findViewById(R.id.minusAdults);
@@ -67,6 +73,7 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nAdults.getText().toString())>0){
                     nAdults.setText(Integer.toString(Integer.parseInt(nAdults.getText().toString())-1));
+                    costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) - Prezzi.prezzoAdulto));
                 }
             }
         });
@@ -76,15 +83,16 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nChildren.setText(Integer.toString(Integer.parseInt(nChildren.getText().toString())+1));
+                costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoBambino));
             }
         });
-
         Button minusChildren = view.findViewById(R.id.minusChildren);
         minusChildren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(Integer.parseInt(nChildren.getText().toString())>0){
                     nChildren.setText(Integer.toString(Integer.parseInt(nChildren.getText().toString())-1));
+                    costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) - Prezzi.prezzoBambino));
                 }
             }
         });
@@ -94,15 +102,16 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nStudents.setText(Integer.toString(Integer.parseInt(nStudents.getText().toString())+1));
+                costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoStudente));
             }
         });
-
         Button minusStudent = view.findViewById(R.id.minusStudent);
         minusStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(Integer.parseInt(nStudents.getText().toString())>0){
                     nStudents.setText(Integer.toString(Integer.parseInt(nStudents.getText().toString())-1));
+                    costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) - Prezzi.prezzoStudente));
                 }
             }
         });
@@ -112,15 +121,16 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nInvalidi.setText(Integer.toString(Integer.parseInt(nInvalidi.getText().toString())+1));
+                costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoInvalido));
             }
         });
-
         Button minusInvalid = view.findViewById(R.id.minusInvalid);
         minusInvalid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(Integer.parseInt(nInvalidi.getText().toString())>0){
                     nInvalidi.setText(Integer.toString(Integer.parseInt(nInvalidi.getText().toString())-1));
+                    costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) - Prezzi.prezzoInvalido));
                 }
             }
         });
@@ -136,6 +146,7 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nBigLuggage.setText(Integer.toString(Integer.parseInt(nBigLuggage.getText().toString())+1));
+                costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoBigLuggage));
             }
         });
         Button minusBigLuggage = view.findViewById(R.id.minusBigLuggage);
@@ -144,6 +155,7 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nBigLuggage.getText().toString())>0){
                     nBigLuggage.setText(Integer.toString(Integer.parseInt(nBigLuggage.getText().toString())-1));
+                    costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) - Prezzi.prezzoBigLuggage));
                 }
             }
         });
@@ -153,6 +165,7 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nMediumLuggage.setText(Integer.toString(Integer.parseInt(nMediumLuggage.getText().toString())+1));
+                costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoMediumLuggage));
             }
         });
         Button minusMediumLuggage = view.findViewById(R.id.minusMediumLuggage);
@@ -161,6 +174,7 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nMediumLuggage.getText().toString())>0){
                     nMediumLuggage.setText(Integer.toString(Integer.parseInt(nMediumLuggage.getText().toString())-1));
+                    costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) - Prezzi.prezzoMediumLuggage));
                 }
             }
         });
@@ -170,6 +184,7 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nSmallLuggage.setText(Integer.toString(Integer.parseInt(nSmallLuggage.getText().toString())+1));
+                costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoSmallLuggage));
             }
         });
         Button minusSmallLuggage = view.findViewById(R.id.minusSmallLuggage);
@@ -178,9 +193,12 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nSmallLuggage.getText().toString())>0){
                     nSmallLuggage.setText(Integer.toString(Integer.parseInt(nSmallLuggage.getText().toString())-1));
+                    costoTotale.setText(Double.toString(Double.parseDouble(costoTotale.getText().toString()) - Prezzi.prezzoSmallLuggage));
                 }
             }
         });
+
+
 
         //PULSANTE Conferma Biglietto
         Button confirmRide = view.findViewById(R.id.confirm_ride);
