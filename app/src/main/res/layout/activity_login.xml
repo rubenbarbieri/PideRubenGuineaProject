@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_bg_color"
-    >
+    android:background="@color/main_bg_color">
 
 
     <EditText
@@ -60,6 +59,7 @@
         android:layout_marginTop="52dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/textViewPasswordDimenticata"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/buttonLogin"
@@ -97,17 +97,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.275"
         app:srcCompat="@drawable/logo" />
-
-    <ImageButton
-        android:id="@+id/imageButtonHelp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_help" />
 
     <ImageView
         android:id="@+id/imageView2"

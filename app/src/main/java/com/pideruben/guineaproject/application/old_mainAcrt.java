@@ -36,7 +36,7 @@ public class old_mainAcrt extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-        int distanzaDaCapolinea =1;
+        int distanzaDaCapolinea = 1;
         Fermata from = new Fermata(spinnerFrom.getSelectedItem().toString(), distanzaDaCapolinea);
         Fermata to = new Fermata(spinnerTo.getSelectedItem().toString(), distanzaDaCapolinea);
 

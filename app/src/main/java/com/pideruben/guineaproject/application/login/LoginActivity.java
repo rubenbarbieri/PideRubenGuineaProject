@@ -33,12 +33,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        final ImageButton helpImageButton = findViewById(R.id.imageButtonHelp);
+        /*final ImageButton helpImageButton = findViewById(R.id.imageButtonHelp);
         helpImageButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Log.i("Login", "Hai richiesto aiuto");
             }
-        });
+        });*/
 
         final TextView passwordDimenticata = findViewById(R.id.passwordDimenticata);
         passwordDimenticata.setOnClickListener(new View.OnClickListener(){
