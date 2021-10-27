@@ -47,20 +47,27 @@ public class FragmentBiglietto extends Fragment {
         TextView Date = view.findViewById(R.id.tx_date);
         Date.setText(dateFormat.format(date));
 
+        TextView nAdults = view.findViewById(R.id.nAdults);
+        TextView nChildren = view.findViewById(R.id.nChildren);
+        TextView nStudents = view.findViewById(R.id.nStudents);
+        TextView nInvalidi = view.findViewById(R.id.nInvalid);
+
 
         //PULSANTI aggiungi/togli persone
         Button plusAdult = view.findViewById(R.id.plusAdults);
         plusAdult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nAdults.setText(Integer.toString(Integer.parseInt(nAdults.getText().toString())+1));
             }
         });
         Button minusAdult = view.findViewById(R.id.minusAdults);
         minusAdult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Integer.parseInt(nAdults.getText().toString())>0){
+                    nAdults.setText(Integer.toString(Integer.parseInt(nAdults.getText().toString())-1));
+                }
             }
         });
 
@@ -68,14 +75,17 @@ public class FragmentBiglietto extends Fragment {
         plusChildren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nChildren.setText(Integer.toString(Integer.parseInt(nChildren.getText().toString())+1));
             }
         });
+
         Button minusChildren = view.findViewById(R.id.minusChildren);
         minusChildren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Integer.parseInt(nChildren.getText().toString())>0){
+                    nChildren.setText(Integer.toString(Integer.parseInt(nChildren.getText().toString())-1));
+                }
             }
         });
 
@@ -83,14 +93,17 @@ public class FragmentBiglietto extends Fragment {
         plusStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nStudents.setText(Integer.toString(Integer.parseInt(nStudents.getText().toString())+1));
             }
         });
+
         Button minusStudent = view.findViewById(R.id.minusStudent);
         minusStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Integer.parseInt(nStudents.getText().toString())>0){
+                    nStudents.setText(Integer.toString(Integer.parseInt(nStudents.getText().toString())-1));
+                }
             }
         });
 
@@ -98,31 +111,40 @@ public class FragmentBiglietto extends Fragment {
         plusInvalid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nInvalidi.setText(Integer.toString(Integer.parseInt(nInvalidi.getText().toString())+1));
             }
         });
+
         Button minusInvalid = view.findViewById(R.id.minusInvalid);
         minusInvalid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Integer.parseInt(nInvalidi.getText().toString())>0){
+                    nInvalidi.setText(Integer.toString(Integer.parseInt(nInvalidi.getText().toString())-1));
+                }
             }
         });
 
         //PULSANTI aggiungi/togli bagagli
 
+        TextView nBigLuggage = view.findViewById(R.id.nBigLuggage);
+        TextView nMediumLuggage = view.findViewById(R.id.nMediumLuggage);
+        TextView nSmallLuggage = view.findViewById(R.id.nSmallLuggage);
+
         Button plusBigLuggage = view.findViewById(R.id.plusBigLuggage);
         plusBigLuggage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nBigLuggage.setText(Integer.toString(Integer.parseInt(nBigLuggage.getText().toString())+1));
             }
         });
         Button minusBigLuggage = view.findViewById(R.id.minusBigLuggage);
         minusBigLuggage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Integer.parseInt(nBigLuggage.getText().toString())>0){
+                    nBigLuggage.setText(Integer.toString(Integer.parseInt(nBigLuggage.getText().toString())-1));
+                }
             }
         });
 
@@ -130,14 +152,16 @@ public class FragmentBiglietto extends Fragment {
         plusMediumLuggage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nMediumLuggage.setText(Integer.toString(Integer.parseInt(nMediumLuggage.getText().toString())+1));
             }
         });
         Button minusMediumLuggage = view.findViewById(R.id.minusMediumLuggage);
         minusMediumLuggage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Integer.parseInt(nMediumLuggage.getText().toString())>0){
+                    nMediumLuggage.setText(Integer.toString(Integer.parseInt(nMediumLuggage.getText().toString())-1));
+                }
             }
         });
 
@@ -145,14 +169,16 @@ public class FragmentBiglietto extends Fragment {
         plusSmallLuggage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                nSmallLuggage.setText(Integer.toString(Integer.parseInt(nSmallLuggage.getText().toString())+1));
             }
         });
         Button minusSmallLuggage = view.findViewById(R.id.minusSmallLuggage);
         minusSmallLuggage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(Integer.parseInt(nSmallLuggage.getText().toString())>0){
+                    nSmallLuggage.setText(Integer.toString(Integer.parseInt(nSmallLuggage.getText().toString())-1));
+                }
             }
         });
 

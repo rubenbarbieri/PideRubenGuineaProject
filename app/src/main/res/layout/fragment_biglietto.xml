@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_bg_color"
-    tools:context=".application.old_mainAcrt">
+    tools:context=".application.MainActivity">
 
     <Spinner
         android:id="@+id/spFrom"
