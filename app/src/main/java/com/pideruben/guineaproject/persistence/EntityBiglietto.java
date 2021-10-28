@@ -26,12 +26,16 @@ public class EntityBiglietto {
     public int n_bagagli_grandi;
 
     public String data;
-
     public String tratta;
+    public String targa;
+
+    public int prezzo;
+
+
 
     public EntityBiglietto(int n_adulti, int n_bambini, int n_studenti, int n_invalidi,
                            int n_bagagli_piccoli, int n_bagagli_medi, int n_bagagli_grandi,
-                           String data, String tratta){
+                           String data, String tratta, String targa, int prezzo){
         this.n_adulti = n_adulti;
         this.n_bambini = n_bambini;
         this.n_studenti = n_studenti;
@@ -41,6 +45,8 @@ public class EntityBiglietto {
         this.n_bagagli_grandi = n_bagagli_grandi;
         this.data = data;
         this.tratta = tratta;
+        this.targa = targa;
+        this.prezzo = prezzo;
 
     }
 
@@ -53,7 +59,9 @@ public class EntityBiglietto {
                 ", Bagagli medi: " + n_bagagli_medi +
                 ", Bagagli grandi: " + n_bagagli_grandi +
                 ", Data: " + data.toString() +
-                ", Tratta: " + tratta;
+                ", Tratta: " + tratta +
+                ", Targa: " + targa +
+                ", Prezzo: " + prezzo;
     }
 
 }

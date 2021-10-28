@@ -247,10 +247,17 @@ public class FragmentBiglietto extends Fragment {
         Spinner to = v.findViewById(R.id.spTo);
         tratta += " to " + to.getSelectedItem().toString();
 
+        //Retrive prezzo
+        TextView prezzo = v.findViewById(R.id.totaleDaPagare);
+        int prezzoTotale = Integer.parseInt(prezzo.getText().toString());
+
+        //Retrieve targa
+        String targa = "AA000AA";
+
         //Create records
 
         EntityBiglietto biglietto = new EntityBiglietto(nAdults, nChildren, nStudents, nInvalidi,
-                nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta);
+                nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta, targa, prezzoTotale);
         Log.i("Main:", biglietto.toString());
         db.daoBiglietto().inserisciBiglietto(biglietto);
         for(EntityBiglietto b : db.daoBiglietto().getAllBiglietti())
