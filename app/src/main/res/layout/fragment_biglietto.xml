@@ -519,7 +519,7 @@
         android:background="@drawable/total_rectangle"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="0"
+        android:text="0.0"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="14sp"
