@@ -208,6 +208,7 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 inserisciBiglietto();
+                resetCampi();
             }
         });
 
@@ -262,6 +263,33 @@ public class FragmentBiglietto extends Fragment {
         db.daoBiglietto().inserisciBiglietto(biglietto);
         for(EntityBiglietto b : db.daoBiglietto().getAllBiglietti())
             Log.i("DB:", b.toString());
+    }
+
+    private void resetCampi(){
+
+        View view = getView();
+
+        TextView costoTotale = view.findViewById(R.id.totaleDaPagare);
+        TextView nAdults = view.findViewById(R.id.nAdults);
+        TextView nChildren = view.findViewById(R.id.nChildren);
+        TextView nStudents = view.findViewById(R.id.nStudents);
+        TextView nInvalidi = view.findViewById(R.id.nInvalid);
+
+        TextView nBigLuggage = view.findViewById(R.id.nBigLuggage);
+        TextView nMediumLuggage = view.findViewById(R.id.nMediumLuggage);
+        TextView nSmallLuggage = view.findViewById(R.id.nSmallLuggage);
+
+        costoTotale.setText("0");
+
+        nAdults.setText("0");
+        nChildren.setText("0");
+        nStudents.setText("0");
+        nInvalidi.setText("0");
+
+        nBigLuggage.setText("0");
+        nMediumLuggage.setText("0");
+        nSmallLuggage.setText("0");
+
     }
 
 }
