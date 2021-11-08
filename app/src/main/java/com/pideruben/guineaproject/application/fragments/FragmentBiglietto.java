@@ -345,10 +345,9 @@ public class FragmentBiglietto extends Fragment {
         if(spinnerFrom.getSelectedItem().toString().compareTo(spinnerTo.getSelectedItem().toString()) == 0){
             Log.i(TAG, "fermate uguali");
             final Snackbar sb = Snackbar.make(view, R.string.erroreFermate, Snackbar.LENGTH_SHORT);
-            sb.setAction(R.string.erroreFermataActionText, view1 -> {
+            sb.setAction(R.string.snackbarActionChiudi, view1 -> {
                 sb.dismiss();
-            });
-            sb.show();
+            }).show();
             return false;
         }
 
@@ -357,12 +356,16 @@ public class FragmentBiglietto extends Fragment {
                 nStudents.getText().toString().compareTo("0") == 0 &&
                 nInvalidi.getText().toString().compareTo("0") == 0){
             final Snackbar sb = Snackbar.make(view, R.string.erroreNoPersone, Snackbar.LENGTH_SHORT);
-            sb.setAction(R.string.erroreNoPersoneActionText, view1 -> {
+            sb.setAction(R.string.snackbarActionChiudi, view1 -> {
                 sb.dismiss();
-            });
-            sb.show();
+            }).show();
             return false;
         }
+
+        final Snackbar sb = Snackbar.make(view, R.string.bigliettoCorretto, Snackbar.LENGTH_SHORT);
+        sb.setAction(R.string.snackbarActionChiudi, view1 -> {
+            sb.dismiss();
+        }).show();
         return true;
     }
 

@@ -7,9 +7,9 @@
     <string name="textViewPasswordDimenticata">Password dimenticata?</string>
 
     <string name="erroreFermate">Le fermate devono essere diverse!</string>
-    <string name="erroreFermataActionText">Chiudi</string>
     <string name="erroreNoPersone">Inserisci almeno un passeggero!</string>
-    <string name="erroreNoPersoneActionText">Chiudi</string>
+    <string name="bigliettoCorretto">Biglietto registrato correttamente</string>
+    <string name="snackbarActionChiudi">Chiudi</string>
 
     <string-array name="tipiPasseggero">
         <item>Adulto</item>
