@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.pideruben.guineaproject.R;
 import com.pideruben.guineaproject.persistence.AppDatabase;
 import com.pideruben.guineaproject.persistence.EntityBiglietto;
@@ -29,7 +30,28 @@ import org.jetbrains.annotations.NotNull;
 import java.text.DateFormat;
 import java.util.Date;
 
+import io.reactivex.rxjava3.internal.operators.single.SingleFlatMapBiSelector;
+
 public class FragmentBiglietto extends Fragment {
+
+    private String TAG = "FragmentBiglietto";
+
+    private Spinner spinnerFrom;
+    private Spinner spinnerTo;
+
+    private TextView date_tv;
+
+    private TextView nAdults;
+    private TextView nChildren;
+    private TextView nStudents;
+    private TextView nInvalidi;
+
+    private TextView nBigLuggage;
+    private TextView nMediumLuggage;
+    private TextView nSmallLuggage;
+
+    private TextView costoTotale;
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -38,8 +60,8 @@ public class FragmentBiglietto extends Fragment {
         View view = inflater.inflate(R.layout.fragment_biglietto, container, false);
 
         //Spinner
-        Spinner spinnerFrom = view.findViewById(R.id.spFrom);
-        Spinner spinnerTo = view.findViewById(R.id.spTo);
+        spinnerFrom = view.findViewById(R.id.spFrom);
+        spinnerTo = view.findViewById(R.id.spTo);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.spinnerFermate, R.layout.color_spinner_ly);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFrom.setAdapter(adapter);
@@ -48,16 +70,15 @@ public class FragmentBiglietto extends Fragment {
         //Imposto la data nella textview
         Date date = new Date();
         DateFormat dateFormat = android.text.format.DateFormat.getLongDateFormat(view.getContext());
-        TextView Date = view.findViewById(R.id.tx_date);
-        Date.setText(dateFormat.format(date));
+        date_tv = view.findViewById(R.id.tx_date);
+        date_tv.setText(dateFormat.format(date));
 
-        TextView costoTotale = view.findViewById(R.id.totaleDaPagare);
-        TextView nAdults = view.findViewById(R.id.nAdults);
-        TextView nChildren = view.findViewById(R.id.nChildren);
-        TextView nStudents = view.findViewById(R.id.nStudents);
-        TextView nInvalidi = view.findViewById(R.id.nInvalid);
+        costoTotale = view.findViewById(R.id.totaleDaPagare);
+        nAdults = view.findViewById(R.id.nAdults);
+        nChildren = view.findViewById(R.id.nChildren);
+        nStudents = view.findViewById(R.id.nStudents);
+        nInvalidi = view.findViewById(R.id.nInvalid);
 
-        double costoBiglietto = 0.;
 
 
         //PULSANTI aggiungi/togli persone
@@ -66,7 +87,8 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nAdults.setText(Integer.toString(Integer.parseInt(nAdults.getText().toString())+1));
-                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoAdulto));
+                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                        + Prezzi.prezzoAdulto));
             }
         });
         Button minusAdult = view.findViewById(R.id.minusAdults);
@@ -75,7 +97,8 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nAdults.getText().toString())>0){
                     nAdults.setText(Integer.toString(Integer.parseInt(nAdults.getText().toString())-1));
-                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())  - Prezzi.prezzoAdulto));
+                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                            - Prezzi.prezzoAdulto));
                 }
             }
         });
@@ -85,7 +108,8 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nChildren.setText(Integer.toString(Integer.parseInt(nChildren.getText().toString())+1));
-                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())  + Prezzi.prezzoBambino));
+                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                        + Prezzi.prezzoBambino));
             }
         });
         Button minusChildren = view.findViewById(R.id.minusChildren);
@@ -94,7 +118,8 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nChildren.getText().toString())>0){
                     nChildren.setText(Integer.toString(Integer.parseInt(nChildren.getText().toString())-1));
-                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())  - Prezzi.prezzoBambino));
+                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                            - Prezzi.prezzoBambino));
                 }
             }
         });
@@ -104,7 +129,8 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nStudents.setText(Integer.toString(Integer.parseInt(nStudents.getText().toString())+1));
-                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString()) + Prezzi.prezzoStudente));
+                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                        + Prezzi.prezzoStudente));
             }
         });
         Button minusStudent = view.findViewById(R.id.minusStudent);
@@ -113,7 +139,8 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nStudents.getText().toString())>0){
                     nStudents.setText(Integer.toString(Integer.parseInt(nStudents.getText().toString())-1));
-                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())  - Prezzi.prezzoStudente));
+                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                            - Prezzi.prezzoStudente));
                 }
             }
         });
@@ -123,7 +150,8 @@ public class FragmentBiglietto extends Fragment {
             @Override
             public void onClick(View view) {
                 nInvalidi.setText(Integer.toString(Integer.parseInt(nInvalidi.getText().toString())+1));
-                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())  + Prezzi.prezzoInvalido));
+                costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                        + Prezzi.prezzoInvalido));
             }
         });
         Button minusInvalid = view.findViewById(R.id.minusInvalid);
@@ -132,16 +160,17 @@ public class FragmentBiglietto extends Fragment {
             public void onClick(View view) {
                 if(Integer.parseInt(nInvalidi.getText().toString())>0){
                     nInvalidi.setText(Integer.toString(Integer.parseInt(nInvalidi.getText().toString())-1));
-                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())  - Prezzi.prezzoInvalido));
+                    costoTotale.setText(String.format("%.0f", Double.parseDouble(costoTotale.getText().toString())
+                            - Prezzi.prezzoInvalido));
                 }
             }
         });
 
         //PULSANTI aggiungi/togli bagagli
 
-        TextView nBigLuggage = view.findViewById(R.id.nBigLuggage);
-        TextView nMediumLuggage = view.findViewById(R.id.nMediumLuggage);
-        TextView nSmallLuggage = view.findViewById(R.id.nSmallLuggage);
+        nBigLuggage = view.findViewById(R.id.nBigLuggage);
+        nMediumLuggage = view.findViewById(R.id.nMediumLuggage);
+        nSmallLuggage = view.findViewById(R.id.nSmallLuggage);
 
         Button plusBigLuggage = view.findViewById(R.id.plusBigLuggage);
         plusBigLuggage.setOnClickListener(new View.OnClickListener() {
@@ -207,8 +236,13 @@ public class FragmentBiglietto extends Fragment {
         confirmRide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inserisciBiglietto();
-                resetCampi();
+
+                Log.i(TAG, "checking...");
+
+                if(checkCampi()){
+                    inserisciBiglietto();
+                    resetCampi();
+                }
             }
         });
 
@@ -221,32 +255,32 @@ public class FragmentBiglietto extends Fragment {
         AppDatabase db = AppDatabase.getDatabase(this.getContext());
         View v = getView();
 
-        TextView adults = v.findViewById(R.id.nAdults);
-        int nAdults = Integer.parseInt(adults.getText().toString());
-        TextView children = v.findViewById(R.id.nChildren);
-        int nChildren = Integer.parseInt(children.getText().toString());
-        TextView students = v.findViewById(R.id.nStudents);
-        int nStudents = Integer.parseInt(students.getText().toString());
-        TextView invalidi = v.findViewById(R.id.nInvalid);
-        int nInvalidi = Integer.parseInt(invalidi.getText().toString());
+        nAdults = v.findViewById(R.id.nAdults);
+        int adults = Integer.parseInt(nAdults.getText().toString());
+        nChildren = v.findViewById(R.id.nChildren);
+        int children = Integer.parseInt(nChildren.getText().toString());
+        nStudents = v.findViewById(R.id.nStudents);
+        int students = Integer.parseInt(nStudents.getText().toString());
+        nInvalidi = v.findViewById(R.id.nInvalid);
+        int invalids = Integer.parseInt(nInvalidi.getText().toString());
 
         // ... retrieve luggages ...
-        TextView bagagliPiccoli = v.findViewById(R.id.nSmallLuggage);
-        int nBagagliPiccoli = Integer.parseInt(bagagliPiccoli.getText().toString());
-        TextView bagagliMedi = v.findViewById(R.id.nMediumLuggage);
-        int nBagagliMedi = Integer.parseInt(bagagliMedi.getText().toString());
-        TextView bagagliEnormi = v.findViewById(R.id.nBigLuggage);
-        int nBagagliColossali = Integer.parseInt(bagagliEnormi.getText().toString());
+        nSmallLuggage = v.findViewById(R.id.nSmallLuggage);
+        int nBagagliPiccoli = Integer.parseInt(nSmallLuggage.getText().toString());
+        nMediumLuggage = v.findViewById(R.id.nMediumLuggage);
+        int nBagagliMedi = Integer.parseInt(nMediumLuggage.getText().toString());
+        nBigLuggage = v.findViewById(R.id.nBigLuggage);
+        int nBagagliColossali = Integer.parseInt(nBigLuggage.getText().toString());
 
         // ... retrieve date ...
-        TextView date = v.findViewById(R.id.tx_date);
-        String data = date.getText().toString();
+        date_tv = v.findViewById(R.id.tx_date);
+        String data = date_tv.getText().toString();
 
         // ... retrieve tratta ...
-        Spinner from = v.findViewById(R.id.spFrom);
-        String tratta = from.getSelectedItem().toString();
-        Spinner to = v.findViewById(R.id.spTo);
-        tratta += " to " + to.getSelectedItem().toString();
+        spinnerFrom = v.findViewById(R.id.spFrom);
+        String tratta = spinnerFrom.getSelectedItem().toString();
+        spinnerTo = v.findViewById(R.id.spTo);
+        tratta += " to " + spinnerTo.getSelectedItem().toString();
 
         //Retrive prezzo
         TextView prezzo = v.findViewById(R.id.totaleDaPagare);
@@ -257,7 +291,7 @@ public class FragmentBiglietto extends Fragment {
 
         //Create records
 
-        EntityBiglietto biglietto = new EntityBiglietto(nAdults, nChildren, nStudents, nInvalidi,
+        EntityBiglietto biglietto = new EntityBiglietto(adults, children, students, invalids,
                 nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta, targa, prezzoTotale);
         Log.i("Main:", biglietto.toString());
         db.daoBiglietto().inserisciBiglietto(biglietto);
@@ -269,15 +303,15 @@ public class FragmentBiglietto extends Fragment {
 
         View view = getView();
 
-        TextView costoTotale = view.findViewById(R.id.totaleDaPagare);
-        TextView nAdults = view.findViewById(R.id.nAdults);
-        TextView nChildren = view.findViewById(R.id.nChildren);
-        TextView nStudents = view.findViewById(R.id.nStudents);
-        TextView nInvalidi = view.findViewById(R.id.nInvalid);
+        costoTotale = view.findViewById(R.id.totaleDaPagare);
+        nAdults = view.findViewById(R.id.nAdults);
+        nChildren = view.findViewById(R.id.nChildren);
+        nStudents = view.findViewById(R.id.nStudents);
+        nInvalidi = view.findViewById(R.id.nInvalid);
 
-        TextView nBigLuggage = view.findViewById(R.id.nBigLuggage);
-        TextView nMediumLuggage = view.findViewById(R.id.nMediumLuggage);
-        TextView nSmallLuggage = view.findViewById(R.id.nSmallLuggage);
+        nBigLuggage = view.findViewById(R.id.nBigLuggage);
+        nMediumLuggage = view.findViewById(R.id.nMediumLuggage);
+        nSmallLuggage = view.findViewById(R.id.nSmallLuggage);
 
         costoTotale.setText("0");
 
@@ -290,6 +324,46 @@ public class FragmentBiglietto extends Fragment {
         nMediumLuggage.setText("0");
         nSmallLuggage.setText("0");
 
+    }
+
+    private boolean checkCampi(){
+
+        View view = getView();
+
+        spinnerFrom = view.findViewById(R.id.spFrom);
+        spinnerTo = view.findViewById(R.id.spTo);
+        date_tv = view.findViewById(R.id.tx_date);
+        nAdults = view.findViewById(R.id.nAdults);
+        nChildren = view.findViewById(R.id.nChildren);
+        nStudents = view.findViewById(R.id.nStudents);
+        nInvalidi = view.findViewById(R.id.nInvalid);
+        nSmallLuggage = view.findViewById(R.id.nSmallLuggage);
+        nMediumLuggage = view.findViewById(R.id.nMediumLuggage);
+        nBigLuggage = view.findViewById(R.id.nBigLuggage);
+        costoTotale = view.findViewById(R.id.totaleDaPagare);
+
+        if(spinnerFrom.getSelectedItem().toString().compareTo(spinnerTo.getSelectedItem().toString()) == 0){
+            Log.i(TAG, "fermate uguali");
+            final Snackbar sb = Snackbar.make(view, R.string.erroreFermate, Snackbar.LENGTH_SHORT);
+            sb.setAction(R.string.erroreFermataActionText, view1 -> {
+                sb.dismiss();
+            });
+            sb.show();
+            return false;
+        }
+
+        else if(nAdults.getText().toString().compareTo("0") == 0 &&
+                nChildren.getText().toString().compareTo("0") == 0 &&
+                nStudents.getText().toString().compareTo("0") == 0 &&
+                nInvalidi.getText().toString().compareTo("0") == 0){
+            final Snackbar sb = Snackbar.make(view, R.string.erroreNoPersone, Snackbar.LENGTH_SHORT);
+            sb.setAction(R.string.erroreNoPersoneActionText, view1 -> {
+                sb.dismiss();
+            });
+            sb.show();
+            return false;
+        }
+        return true;
     }
 
 }
