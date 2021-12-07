@@ -1,6 +1,8 @@
 package com.pideruben.guineaproject.application.fragments;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -236,12 +238,9 @@ public class FragmentBiglietto extends Fragment {
         confirmRide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Log.i(TAG, "checking...");
-
                 if(checkCampi()){
-                    inserisciBiglietto();
-                    resetCampi();
+                    ShowDialog();
                 }
             }
         });
@@ -249,6 +248,29 @@ public class FragmentBiglietto extends Fragment {
 
 
         return view;
+    }
+
+    private void ShowDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+        builder.setCancelable(true);
+        builder.setTitle("Ticket Summary");
+        builder.setMessage("Summary...");
+        builder.setPositiveButton("Confirm",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        inserisciBiglietto();
+                        resetCampi();
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void inserisciBiglietto(){

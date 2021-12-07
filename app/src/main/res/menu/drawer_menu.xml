@@ -9,26 +9,22 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_help"
-            android:title="Home" />
+            android:title="Ride" />
 
         <item
             android:id="@+id/nav_veicolo"
             android:icon="@drawable/veicolo"
-            android:title="Veicolo" />
+            android:title="Veichle" />
 
         <item
             android:id="@+id/nav_sommario"
             android:icon="@drawable/sommario"
             android:title="Rides Summary" />
-
-        <item
-            android:id="@+id/nav_impostazioni"
-            android:icon="@drawable/arrow"
-            android:title="Impostazioni" />
+        
         <item
             android:id="@+id/nav_Account"
             android:icon="@drawable/arrow"
-            android:title="Account" />
+            android:title="Log Out" />
 
     </group>
 </menu>
