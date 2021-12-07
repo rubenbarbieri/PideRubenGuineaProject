@@ -8,23 +8,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_help"
-            android:title="Ride" />
+            android:icon="@drawable/ic_ticket"
+            android:title="Ticket" />
 
         <item
             android:id="@+id/nav_veicolo"
-            android:icon="@drawable/veicolo"
+            android:icon="@drawable/ic_bus"
             android:title="Veichle" />
 
         <item
             android:id="@+id/nav_sommario"
-            android:icon="@drawable/sommario"
+            android:icon="@drawable/ic_summary"
             android:title="Rides Summary" />
         
         <item
             android:id="@+id/nav_Account"
-            android:icon="@drawable/arrow"
-            android:title="Log Out" />
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
 
     </group>
 </menu>
