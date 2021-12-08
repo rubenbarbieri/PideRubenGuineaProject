@@ -27,9 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //Log.i("Login", "Bottone premuto");
-                Intent myIntent = new Intent(v.getContext(), MainActivity.class);
+                Intent myIntent = new Intent(v.getContext(), PostLoginActivity.class);
                 startActivity(myIntent);
+                finish();
             }
         });
 

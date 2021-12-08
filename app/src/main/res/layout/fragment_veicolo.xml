@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/tx_modello"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="27dp"
             android:layout_marginTop="52dp"
             android:layout_marginEnd="28dp"
@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/tx_kmEffettuati"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="27dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="28dp"
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/tx_Carburante"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="27dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="28dp"

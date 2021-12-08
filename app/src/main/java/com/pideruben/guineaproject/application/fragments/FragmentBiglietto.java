@@ -232,7 +232,6 @@ public class FragmentBiglietto extends Fragment {
         });
 
 
-
         //PULSANTE Conferma Biglietto
         Button confirmRide = view.findViewById(R.id.confirm_ride);
         confirmRide.setOnClickListener(new View.OnClickListener() {
@@ -319,6 +318,11 @@ public class FragmentBiglietto extends Fragment {
         db.daoBiglietto().inserisciBiglietto(biglietto);
         for(EntityBiglietto b : db.daoBiglietto().getAllBiglietti())
             Log.i("DB:", b.toString());
+
+        final Snackbar sb = Snackbar.make(v, R.string.bigliettoCorretto, Snackbar.LENGTH_SHORT);
+        sb.setAction(R.string.snackbarActionChiudi, view1 -> {
+            sb.dismiss();
+        }).show();
     }
 
     private void resetCampi(){
@@ -384,10 +388,7 @@ public class FragmentBiglietto extends Fragment {
             return false;
         }
 
-        final Snackbar sb = Snackbar.make(view, R.string.bigliettoCorretto, Snackbar.LENGTH_SHORT);
-        sb.setAction(R.string.snackbarActionChiudi, view1 -> {
-            sb.dismiss();
-        }).show();
+
         return true;
     }
 

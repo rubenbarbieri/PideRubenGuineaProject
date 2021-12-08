@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GuineaProject">
         <activity
+            android:name=".application.login.PostLoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".application.MainActivity"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".application.login.LoginActivity"
             android:theme="@style/Theme.Design.NoActionBar">
@@ -23,7 +26,7 @@
         </activity>
         <activity
             android:name=".application.old_mainAcrt"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

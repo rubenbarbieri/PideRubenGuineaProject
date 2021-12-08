@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.pideruben.guineaproject.application.fragments.FragmentBiglietto;
 import com.pideruben.guineaproject.R;
 import com.pideruben.guineaproject.application.fragments.FragmentVeicolo;
+import com.pideruben.guineaproject.application.login.LoginActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -64,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_veicolo:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentVeicolo()).commit();
+                break;
+            case R.id.nav_Account:
+                finish();
+                Intent myIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(myIntent);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

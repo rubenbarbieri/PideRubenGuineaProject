@@ -18,12 +18,17 @@
     </string-array>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="conferma">Conferma</string>
+    <string name="seleziona_targa">Seleziona Targa</string>
+
     <string-array name="spinnerFermate">
         <item>Susana</item>
         <item>Fermata2</item>
         <item>Fermata3</item>
         <item>São Domingo</item>
     </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
