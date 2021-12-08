@@ -10,26 +10,42 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.pideruben.guineaproject.application.fragments.FragmentBiglietto;
 import com.pideruben.guineaproject.R;
 import com.pideruben.guineaproject.application.fragments.FragmentVeicolo;
 import com.pideruben.guineaproject.application.login.LoginActivity;
+import com.pideruben.guineaproject.persistence.AppDatabase;
+import com.pideruben.guineaproject.persistence.EntityCorsa;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        AppDatabase db = AppDatabase.getDatabase(this);
+        if (db.daoCorse().getAllCorsa().isEmpty()){
+            Date date = new Date();
+            DateFormat dateFormat = android.text.format.DateFormat.getLongDateFormat(this);
+            String dataOggi = dateFormat.format(date);
+            db.daoCorse().inserisciCorsa(new EntityCorsa(0,false, "ciao"));
+            Log.i("Main", "RIGA VUOTA");
+        }
+
+        GestisciCorsa();
+
 
         super.onCreate(savedInstanceState);
 
@@ -62,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_home:
+                GestisciCorsa();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentBiglietto()).commit();
                 break;
             case R.id.nav_veicolo:
@@ -71,6 +88,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 Intent myIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(myIntent);
+                break;
+            case R.id.nav_terminaCorsa:
+                AppDatabase db = AppDatabase.getDatabase(this);
+                List<EntityCorsa> entity_corsa  = db.daoCorse().getAllCorsa();
+                EntityCorsa corsa = entity_corsa.get(0);
+                int progressivoCorsa = corsa.nCorsa;
+                String data = corsa.data;
+                db.daoCorse().deleteCorsa(corsa);
+                db.daoCorse().inserisciCorsa(new EntityCorsa(progressivoCorsa, false, data));
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -84,6 +110,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else {
             super.onBackPressed();
+        }
+    }
+
+
+    void GestisciCorsa(){
+        AppDatabase db = AppDatabase.getDatabase(this);
+        List<EntityCorsa> entity_corsa  = db.daoCorse().getAllCorsa();
+        EntityCorsa corsa = entity_corsa.get(0);
+        int progressivoCorsa = corsa.nCorsa;
+        String data = corsa.data;
+        boolean isOnRoad = corsa.isOnRoad;
+
+        Date date = new Date();
+        DateFormat dateFormat = android.text.format.DateFormat.getLongDateFormat(this);
+        String dataOggi = dateFormat.format(date);
+
+        if(data == dataOggi){
+            if(!isOnRoad){
+                db.daoCorse().deleteCorsa(corsa);
+                EntityCorsa nuovaCorsa = new EntityCorsa(progressivoCorsa+1, true, data);
+                db.daoCorse().inserisciCorsa(nuovaCorsa);
+            }
+        }
+        else{
+            db.daoCorse().deleteCorsa(corsa);
+            EntityCorsa nuovaCorsa = new EntityCorsa(0, false, dataOggi);
         }
     }
 }

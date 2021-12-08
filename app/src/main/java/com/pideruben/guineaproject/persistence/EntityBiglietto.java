@@ -1,14 +1,8 @@
 package com.pideruben.guineaproject.persistence;
 
-import androidx.room.ColumnInfo;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import com.pideruben.guineaproject.values.Enums;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Entity(tableName = "biglietti")
 public class EntityBiglietto {

@@ -3,6 +3,7 @@ package com.pideruben.guineaproject.application.login;
 import androidx.appcompat.app.AppCompatActivity;
 import com.pideruben.guineaproject.R;
 import com.pideruben.guineaproject.application.MainActivity;
+import com.pideruben.guineaproject.persistence.AppDatabase;
 
 import android.content.Intent;
 import android.os.Bundle;

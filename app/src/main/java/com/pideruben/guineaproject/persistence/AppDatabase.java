@@ -12,11 +12,12 @@ import com.pideruben.guineaproject.utilities.Converters;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {EntityDipendente.class, EntityBiglietto.class}, version = 1)
+@Database(entities = {EntityDipendente.class, EntityBiglietto.class, EntityCorsa.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract DaoDipendenti daoDipendenti();
     public abstract DaoBiglietto daoBiglietto();
+    public abstract DaoCorse daoCorse();
 
     /*pattern Singleton: l'oggetto RoomDatabase è costoso da creare, quindi è bene avere un'unica
     * istanza di AppDatabase ed usare sempre quella. Quando serve si accede all'istanza con

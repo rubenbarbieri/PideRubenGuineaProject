@@ -20,6 +20,11 @@
             android:id="@+id/nav_sommario"
             android:icon="@drawable/ic_summary"
             android:title="Rides Summary" />
+
+        <item
+            android:id="@+id/nav_terminaCorsa"
+            android:icon="@drawable/ic_summary"
+            android:title="Termina Corsa" />
         
         <item
             android:id="@+id/nav_Account"
