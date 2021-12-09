@@ -23,13 +23,15 @@
 
         <item
             android:id="@+id/nav_terminaCorsa"
-            android:icon="@drawable/ic_summary"
+            android:icon="@drawable/ic_stop"
             android:title="Termina Corsa" />
         
         <item
             android:id="@+id/nav_Account"
             android:icon="@drawable/ic_logout"
-            android:title="Logout" />
-
+            android:title="Logout"
+            />
     </group>
+
+
 </menu>

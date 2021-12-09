@@ -25,12 +25,14 @@ import com.google.android.material.snackbar.Snackbar;
 import com.pideruben.guineaproject.R;
 import com.pideruben.guineaproject.persistence.AppDatabase;
 import com.pideruben.guineaproject.persistence.EntityBiglietto;
+import com.pideruben.guineaproject.persistence.EntityCorsa;
 import com.pideruben.guineaproject.values.Prezzi;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 
 import io.reactivex.rxjava3.internal.operators.single.SingleFlatMapBiSelector;
 
@@ -53,6 +55,7 @@ public class FragmentBiglietto extends Fragment {
     private TextView nSmallLuggage;
 
     private TextView costoTotale;
+    private TextView nCorsa;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
@@ -82,6 +85,13 @@ public class FragmentBiglietto extends Fragment {
         nInvalidi = view.findViewById(R.id.nInvalid);
 
 
+        //Numero Corsa
+        nCorsa = view.findViewById(R.id.nCorsa);
+        AppDatabase db = AppDatabase.getDatabase(this.getContext());
+        List<EntityCorsa> entity_corsa  = db.daoCorse().getAllCorsa();
+        EntityCorsa corsa = entity_corsa.get(0);
+        int progressivoCorsa = corsa.nCorsa;
+        nCorsa.setText(Integer.toString(progressivoCorsa));
 
         //PULSANTI aggiungi/togli persone
         Button plusAdult = view.findViewById(R.id.plusAdults);
@@ -244,16 +254,25 @@ public class FragmentBiglietto extends Fragment {
             }
         });
 
-
-
         return view;
     }
 
     private void ShowDialog(){
+        View v = getView();
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
         builder.setCancelable(true);
-        builder.setTitle("Ticket Summary");
-        builder.setMessage("Summary...");
+        builder.setTitle("Resumo");
+
+        builder.setMessage("Adultos: "+ ((TextView)(v.findViewById(R.id.nAdults))).getText()
+                + "\nCrianças: " + ((TextView)(v.findViewById(R.id.nChildren))).getText()
+                + "\nEstudantes: " + ((TextView)(v.findViewById(R.id.nStudents))).getText()
+                + "\nInválidos: " + ((TextView)(v.findViewById(R.id.nInvalid))).getText()
+                + "\n\nBagagem: "
+                + "\n   pequeno: " + ((TextView)(v.findViewById(R.id.nSmallLuggage))).getText()
+                + "\n   médio: " + ((TextView)(v.findViewById(R.id.nMediumLuggage))).getText()
+                + "\n   grande: " + ((TextView)(v.findViewById(R.id.nBigLuggage))).getText()
+                + "\n\n\nTotal: " + ((TextView)(v.findViewById(R.id.totaleDaPagare))).getText() + " FCFA"
+        );
         builder.setPositiveButton("Confirm",
                 new DialogInterface.OnClickListener() {
                     @Override

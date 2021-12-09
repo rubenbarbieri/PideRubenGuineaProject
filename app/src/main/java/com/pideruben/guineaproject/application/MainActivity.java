@@ -40,10 +40,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Date date = new Date();
             DateFormat dateFormat = android.text.format.DateFormat.getLongDateFormat(this);
             String dataOggi = dateFormat.format(date);
-            db.daoCorse().inserisciCorsa(new EntityCorsa(0,false, "ciao"));
-            Log.i("Main", "RIGA VUOTA");
-        }
+            EntityCorsa prova = new EntityCorsa(1,false, "data pacca");
+            db.daoCorse().inserisciCorsa(prova);
+            Log.i("MainActivity", "riga inserita");
 
+        }
         GestisciCorsa();
 
 
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_home:
-                GestisciCorsa();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentBiglietto()).commit();
                 break;
             case R.id.nav_veicolo:
@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String data = corsa.data;
                 db.daoCorse().deleteCorsa(corsa);
                 db.daoCorse().inserisciCorsa(new EntityCorsa(progressivoCorsa, false, data));
+                GestisciCorsa();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentBiglietto()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     void GestisciCorsa(){
-        AppDatabase db = AppDatabase.getDatabase(this);
+        AppDatabase db = AppDatabase.getDatabase(getApplicationContext());
         List<EntityCorsa> entity_corsa  = db.daoCorse().getAllCorsa();
         EntityCorsa corsa = entity_corsa.get(0);
         int progressivoCorsa = corsa.nCorsa;
@@ -126,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DateFormat dateFormat = android.text.format.DateFormat.getLongDateFormat(this);
         String dataOggi = dateFormat.format(date);
 
-        if(data == dataOggi){
+        if(data.compareTo(dataOggi)==0){
             if(!isOnRoad){
                 db.daoCorse().deleteCorsa(corsa);
                 EntityCorsa nuovaCorsa = new EntityCorsa(progressivoCorsa+1, true, data);
@@ -135,7 +137,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else{
             db.daoCorse().deleteCorsa(corsa);
-            EntityCorsa nuovaCorsa = new EntityCorsa(0, false, dataOggi);
+            EntityCorsa nuovaCorsa = new EntityCorsa(1, false, dataOggi);
+            db.daoCorse().inserisciCorsa(nuovaCorsa);
         }
     }
 }

@@ -17,7 +17,7 @@ public interface DaoCorse {
     @Delete
     void deleteCorsa(EntityCorsa corsa);
 
-    @Query("SELECT * FROM corse ORDER BY nCorsa ASC")
+    @Query("SELECT * FROM corse")
     List<EntityCorsa> getAllCorsa();
 
 }
