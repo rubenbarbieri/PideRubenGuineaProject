@@ -29,6 +29,7 @@ import com.pideruben.guineaproject.persistence.EntityCorsa;
 import com.pideruben.guineaproject.values.Prezzi;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -329,10 +330,13 @@ public class FragmentBiglietto extends Fragment {
         //Retrieve targa
         String targa = "AA000AA";
 
+        TextView corsa = v.findViewById(R.id.nCorsa);
+        int n_corsa = Integer.parseInt(corsa.getText().toString());
+
         //Create records
 
         EntityBiglietto biglietto = new EntityBiglietto(adults, children, students, invalids,
-                nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta, targa, prezzoTotale);
+                nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta, targa, n_corsa, prezzoTotale);
         Log.i("Main:", biglietto.toString());
         db.daoBiglietto().inserisciBiglietto(biglietto);
         for(EntityBiglietto b : db.daoBiglietto().getAllBiglietti())

@@ -25,6 +25,11 @@
             android:id="@+id/nav_terminaCorsa"
             android:icon="@drawable/ic_stop"
             android:title="Termina Corsa" />
+
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/ic_update"
+            android:title="Update" />
         
         <item
             android:id="@+id/nav_Account"

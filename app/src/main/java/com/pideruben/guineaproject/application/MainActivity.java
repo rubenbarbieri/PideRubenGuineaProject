@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.pideruben.guineaproject.application.fragments.FragmentBiglietto;
 import com.pideruben.guineaproject.R;
+import com.pideruben.guineaproject.application.fragments.FragmentRiassunto;
 import com.pideruben.guineaproject.application.fragments.FragmentVeicolo;
 import com.pideruben.guineaproject.application.login.LoginActivity;
 import com.pideruben.guineaproject.persistence.AppDatabase;
@@ -89,6 +90,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent myIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(myIntent);
                 break;
+            case R.id.nav_sommario:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentRiassunto()).commit();
+                break;
+            case R.id.nav_update:
+                //TODO Pide
+                break;
+
             case R.id.nav_terminaCorsa:
                 AppDatabase db = AppDatabase.getDatabase(this);
                 List<EntityCorsa> entity_corsa  = db.daoCorse().getAllCorsa();
