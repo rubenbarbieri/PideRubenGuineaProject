@@ -19,4 +19,13 @@ public class EntityDipendente {
 
     public String cognome;
 
+    public String password;
+
+    public EntityDipendente(String nome, String cognome, String password){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.password = password;
+    }
+
+
 }

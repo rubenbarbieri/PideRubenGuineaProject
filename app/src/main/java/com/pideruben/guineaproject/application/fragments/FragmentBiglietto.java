@@ -75,7 +75,7 @@ public class FragmentBiglietto extends Fragment {
 
         //Imposto la data nella textview
         Date date = new Date();
-        DateFormat dateFormat = android.text.format.DateFormat.getLongDateFormat(view.getContext());
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(view.getContext());
         date_tv = view.findViewById(R.id.tx_date);
         date_tv.setText(dateFormat.format(date));
 
@@ -319,8 +319,10 @@ public class FragmentBiglietto extends Fragment {
 
         // ... retrieve tratta ...
         spinnerFrom = v.findViewById(R.id.spFrom);
+        String da = spinnerFrom.getSelectedItem().toString();
         String tratta = spinnerFrom.getSelectedItem().toString();
         spinnerTo = v.findViewById(R.id.spTo);
+        String a = spinnerTo.getSelectedItem().toString();
         tratta += " to " + spinnerTo.getSelectedItem().toString();
 
         //Retrive prezzo
@@ -336,7 +338,7 @@ public class FragmentBiglietto extends Fragment {
         //Create records
 
         EntityBiglietto biglietto = new EntityBiglietto(adults, children, students, invalids,
-                nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta, targa, n_corsa, prezzoTotale);
+                nBagagliPiccoli, nBagagliMedi, nBagagliColossali, data, tratta, targa, n_corsa, prezzoTotale, da, a);
         Log.i("Main:", biglietto.toString());
         db.daoBiglietto().inserisciBiglietto(biglietto);
         for(EntityBiglietto b : db.daoBiglietto().getAllBiglietti())

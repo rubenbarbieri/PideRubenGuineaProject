@@ -35,7 +35,7 @@
             android:background="@drawable/dw_spinner"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:text="Alarme de manutenção"
+            android:text="@string/allarme_manutenzione"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/tx_modello"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="27dp"
             android:layout_marginTop="52dp"
             android:layout_marginEnd="28dp"
@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/tx_kmEffettuati"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="27dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="28dp"
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/tx_Carburante"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="27dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="28dp"
@@ -95,7 +95,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="57dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Modelo"
+            android:text="@string/modello"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="35dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Km percorridos"
+            android:text="@string/km_percorsi"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="35dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Combustível"
+            android:text="@string/conbustibile"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"

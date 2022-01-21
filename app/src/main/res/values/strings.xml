@@ -18,13 +18,38 @@
     </string-array>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="conferma">Conferma</string>
-    <string name="seleziona_targa">Seleziona Targa</string>
+    <string name="conferma">Confirmação</string>
+    <string name="seleziona_targa">Selecao tchapa</string>
+
+
+
+    <string name="Da">Para</string>
+    <string name="A">Ante</string>
+    <string name="data">Data</string>
+    <string name="adulti">Adultos</string>
+    <string name="bambini">Carianças</string>
+    <string name="studenti">Alunos</string>
+    <string name="ammalati">Doentes</string>
+    <string name="bagagli">Bagagem</string>
+    <string name="piccolo">Pequeno</string>
+    <string name="medio">Medio</string>
+    <string name="grande">Garande</string>
+    <string name="totale">Total</string>
+    <string name="conferma_corsa">Confirmação Corrida</string>
+
+    <string name="totale_depositare">Total a ser depositado</string>
+    <string name="totale_corse">Total corridas</string>
+    <string name="invio">Mandar</string>
+
+    <string name="km_percorsi">Distancia efectuada</string>
+    <string name="modello">Modelo</string>
+    <string name="conbustibile">Conbustivel</string>
+    <string name="allarme_manutenzione">Alarme de manutenção</string>
 
     <string-array name="spinnerFermate">
-        <item>Susana</item>
-        <item>Fermata2</item>
-        <item>Fermata3</item>
+        <item>Suzana</item>
+        <item>Kolager</item>
+        <item>Elia</item>
         <item>São Domingo</item>
     </string-array>
 
