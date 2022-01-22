@@ -36,7 +36,7 @@
         android:id="@+id/buttonConfermaTarga"
         android:layout_width="277dp"
         android:layout_height="33dp"
-        android:layout_marginTop="472dp"
+        android:layout_marginTop="280dp"
         android:background="@drawable/button_login"
         android:fontFamily="@font/poppins_medium"
 

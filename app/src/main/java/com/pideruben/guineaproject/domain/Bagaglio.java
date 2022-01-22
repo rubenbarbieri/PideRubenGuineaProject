@@ -1,21 +1,21 @@
 package com.pideruben.guineaproject.domain;
 
-import com.pideruben.guineaproject.values.Enums;
+import com.pideruben.guineaproject.values.Costanti;
 
 public class Bagaglio {
 
-    private Enums.tipoBagaglio tipoBagaglio;
+    private Costanti.tipoBagaglio tipoBagaglio;
 
-    public Bagaglio(){tipoBagaglio = Enums.tipoBagaglio.Medio;}
-    public Bagaglio(Enums.tipoBagaglio bagaglio){
+    public Bagaglio(){tipoBagaglio = Costanti.tipoBagaglio.Medio;}
+    public Bagaglio(Costanti.tipoBagaglio bagaglio){
         tipoBagaglio = bagaglio;
     }
 
-    public void setTipoBagaglio(Enums.tipoBagaglio nuovoBagaglio){
+    public void setTipoBagaglio(Costanti.tipoBagaglio nuovoBagaglio){
         tipoBagaglio = nuovoBagaglio;
     }
 
-    public Enums.tipoBagaglio getTipoBagaglio(){
+    public Costanti.tipoBagaglio getTipoBagaglio(){
         return tipoBagaglio;
     }
 

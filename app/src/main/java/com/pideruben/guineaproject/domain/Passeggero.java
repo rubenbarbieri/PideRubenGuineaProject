@@ -1,20 +1,20 @@
 package com.pideruben.guineaproject.domain;
 
-import com.pideruben.guineaproject.values.Enums;
-import com.pideruben.guineaproject.values.Enums.tipoPasseggero;
+import com.pideruben.guineaproject.values.Costanti;
+import com.pideruben.guineaproject.values.Costanti.tipoPasseggero;
 
 public class Passeggero {
 
     private tipoPasseggero tipoPasseggero;
 
     public Passeggero(){
-        tipoPasseggero = Enums.tipoPasseggero.Adulto;
+        tipoPasseggero = Costanti.tipoPasseggero.Adulto;
     }
-    public Passeggero(Enums.tipoPasseggero tipo){
+    public Passeggero(Costanti.tipoPasseggero tipo){
         tipoPasseggero = tipo;
     }
 
-    public Enums.tipoPasseggero getTipoPasseggero() {
+    public Costanti.tipoPasseggero getTipoPasseggero() {
         return tipoPasseggero;
     }
 

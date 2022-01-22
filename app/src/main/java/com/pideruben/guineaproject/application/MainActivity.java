@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     ListaDipendenti listaDipendenti = gson.fromJson(datiRicevuti, ListaDipendenti.class);
 
-                    ArrayList<Dipendente> list = listaDipendenti.getList();
+                    ArrayList<Dipendente> list = (ArrayList<Dipendente>) listaDipendenti.getDipendenti();
 
                     if(!list.isEmpty())
                         Log.i("CAZZZO",list.get(0).getNome());

@@ -1,19 +1,17 @@
 package com.pideruben.guineaproject.domain;
 
-import com.pideruben.guineaproject.values.Enums;
 
-import java.util.Date;
-import java.util.Calendar;
-import java.util.TimeZone;
-import java.util.Locale;
-import java.time.LocalDateTime;
-
+import com.google.gson.annotations.SerializedName;
 
 public class Dipendente {
 
-    private int id;   //Avevamo scritto la classe con solo id e tempo di lavoro, ma non ha senso secondo me inserire la data e il tempo di lavoro ad un dipendente.
+    @SerializedName("id")
+    private int id;
+    @SerializedName("nome")
     private String nome;
+    @SerializedName("cognome")
     private String cognome;
+    @SerializedName("password")
     private String password;
 
     public Dipendente(int id, String nome, String cognome, String password) {

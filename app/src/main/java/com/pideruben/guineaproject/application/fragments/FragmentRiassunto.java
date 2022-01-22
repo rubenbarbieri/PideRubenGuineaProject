@@ -346,7 +346,7 @@ public class FragmentRiassunto extends Fragment {
 
                 try {
                     for(String biglietto : json)
-                        SendTickets("http://172.104.132.177/api/corse", biglietto);
+                        SendTickets("http://172.105.70.55/api/corse", biglietto);
                 }
                 catch (IOException exception){
                     exception.printStackTrace();
@@ -411,9 +411,11 @@ public class FragmentRiassunto extends Fragment {
             String dataJSON = giorno+"/"+mese+"/"+anno;*/
             //Log.i("DATACAZZO", dataJSON);
 
+            String dataFormatoCorretto = biglietto.data.substring(0, 6) + "20" + biglietto.data.substring(6, 8);
+
             json.add("{\"n_adulti\" : \""+biglietto.n_adulti + "\", \"n_bambini\" : \""+biglietto.n_bambini + "\", \"n_studenti\" : \""+biglietto.n_studenti +
                     "\", \"n_ammalati\" : \""+biglietto.n_invalidi + "\", \"n_bagagli_piccoli\" : \""+biglietto.n_bagagli_piccoli + "\", \"n_bagagli_medi\" : \""+biglietto.n_bagagli_medi +
-                    "\", \"n_bagagli_grandi\" : \""+biglietto.n_bagagli_grandi + "\", \"da\" : \""+biglietto.da + "\", \"a\" : \""+biglietto.a + "\", \"prezzo\" : \""+biglietto.prezzo + "\", \"data\" : \""+biglietto.data + "\"}");
+                    "\", \"n_bagagli_grandi\" : \""+biglietto.n_bagagli_grandi + "\", \"da\" : \""+biglietto.da + "\", \"a\" : \""+biglietto.a + "\", \"prezzo\" : \""+biglietto.prezzo + "\", \"data\" : \""+dataFormatoCorretto + "\"}");
             Log.i("CAZZO", json.get(0));
         }
         return json;
